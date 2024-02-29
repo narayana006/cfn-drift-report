@@ -1,0 +1,26 @@
+{
+  "StackResourceDrifts": [
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/data-prod/7c2e1d50-9e2a-11ef-9d4e-0f1e2d3c4b5a",
+      "LogicalResourceId": "OrdersTable",
+      "PhysicalResourceId": "data-prod-orders",
+      "ResourceType": "AWS::DynamoDB::Table",
+      "ExpectedProperties": "{\"BillingMode\":\"PAY_PER_REQUEST\",\"TableName\":\"data-prod-orders\"}",
+      "ActualProperties": "{\"BillingMode\":\"PAY_PER_REQUEST\",\"TableName\":\"data-prod-orders\"}",
+      "PropertyDifferences": [],
+      "StackResourceDriftStatus": "IN_SYNC",
+      "Timestamp": "2025-11-09T14:05:40.087000+00:00"
+    },
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/data-prod/7c2e1d50-9e2a-11ef-9d4e-0f1e2d3c4b5a",
+      "LogicalResourceId": "ExportBucket",
+      "PhysicalResourceId": "acme-data-prod-exports",
+      "ResourceType": "AWS::S3::Bucket",
+      "ExpectedProperties": "{\"BucketName\":\"acme-data-prod-exports\"}",
+      "ActualProperties": "{\"BucketName\":\"acme-data-prod-exports\"}",
+      "PropertyDifferences": [],
+      "StackResourceDriftStatus": "IN_SYNC",
+      "Timestamp": "2025-11-09T14:05:40.087000+00:00"
+    }
+  ]
+}

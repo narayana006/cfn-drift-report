@@ -1,0 +1,116 @@
+{
+  "StackResourceDrifts": [
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/web-prod/5b1f0c40-9e2a-11ef-8c3d-0a1b2c3d4e5f",
+      "LogicalResourceId": "AssetsBucket",
+      "PhysicalResourceId": "acme-web-prod-assets",
+      "ResourceType": "AWS::S3::Bucket",
+      "ExpectedProperties": "{\"BucketName\":\"acme-web-prod-assets\",\"VersioningConfiguration\":{\"Status\":\"Enabled\"},\"Tags\":[{\"Key\":\"team\",\"Value\":\"web\"}]}",
+      "ActualProperties": "{\"BucketName\":\"acme-web-prod-assets\",\"VersioningConfiguration\":{\"Status\":\"Suspended\"},\"Tags\":[{\"Key\":\"team\",\"Value\":\"web\"},{\"Key\":\"cost-center\",\"Value\":\"cc-1042\"}]}",
+      "PropertyDifferences": [
+        {
+          "PropertyPath": "/VersioningConfiguration/Status",
+          "ExpectedValue": "Enabled",
+          "ActualValue": "Suspended",
+          "DifferenceType": "NOT_EQUAL"
+        },
+        {
+          "PropertyPath": "/Tags/1",
+          "ExpectedValue": "null",
+          "ActualValue": "{\"Key\":\"cost-center\",\"Value\":\"cc-1042\"}",
+          "DifferenceType": "ADD"
+        }
+      ],
+      "StackResourceDriftStatus": "MODIFIED",
+      "Timestamp": "2025-11-09T14:02:11.512000+00:00"
+    },
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/web-prod/5b1f0c40-9e2a-11ef-8c3d-0a1b2c3d4e5f",
+      "LogicalResourceId": "JobsQueue",
+      "PhysicalResourceId": "https://sqs.us-east-1.amazonaws.com/123456789012/web-prod-jobs",
+      "ResourceType": "AWS::SQS::Queue",
+      "ExpectedProperties": "{\"DelaySeconds\":20,\"MessageRetentionPeriod\":345600,\"VisibilityTimeout\":60}",
+      "ActualProperties": "{\"DelaySeconds\":120,\"MessageRetentionPeriod\":1209600,\"VisibilityTimeout\":60}",
+      "PropertyDifferences": [
+        {
+          "PropertyPath": "/DelaySeconds",
+          "ExpectedValue": "20",
+          "ActualValue": "120",
+          "DifferenceType": "NOT_EQUAL"
+        },
+        {
+          "PropertyPath": "/MessageRetentionPeriod",
+          "ExpectedValue": "345600",
+          "ActualValue": "1209600",
+          "DifferenceType": "NOT_EQUAL"
+        }
+      ],
+      "StackResourceDriftStatus": "MODIFIED",
+      "Timestamp": "2025-11-09T14:02:11.512000+00:00"
+    },
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/web-prod/5b1f0c40-9e2a-11ef-8c3d-0a1b2c3d4e5f",
+      "LogicalResourceId": "WebSecurityGroup",
+      "PhysicalResourceId": "sg-0a1b2c3d4e5f60718",
+      "ResourceType": "AWS::EC2::SecurityGroup",
+      "ExpectedProperties": "{\"GroupDescription\":\"web tier\",\"SecurityGroupIngress\":[{\"CidrIp\":\"10.0.0.0/16\",\"FromPort\":443,\"IpProtocol\":\"tcp\",\"ToPort\":443}]}",
+      "ActualProperties": "{\"GroupDescription\":\"web tier\",\"SecurityGroupIngress\":[{\"CidrIp\":\"10.0.0.0/16\",\"FromPort\":443,\"IpProtocol\":\"tcp\",\"ToPort\":443},{\"CidrIp\":\"0.0.0.0/0\",\"FromPort\":22,\"IpProtocol\":\"tcp\",\"ToPort\":22}]}",
+      "PropertyDifferences": [
+        {
+          "PropertyPath": "/SecurityGroupIngress/1",
+          "ExpectedValue": "null",
+          "ActualValue": "{\"CidrIp\":\"0.0.0.0/0\",\"FromPort\":22,\"IpProtocol\":\"tcp\",\"ToPort\":22}",
+          "DifferenceType": "ADD"
+        }
+      ],
+      "StackResourceDriftStatus": "MODIFIED",
+      "Timestamp": "2025-11-09T14:02:11.512000+00:00"
+    },
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/web-prod/5b1f0c40-9e2a-11ef-8c3d-0a1b2c3d4e5f",
+      "LogicalResourceId": "ThumbnailFunction",
+      "PhysicalResourceId": "web-prod-thumbnailer",
+      "ResourceType": "AWS::Lambda::Function",
+      "ExpectedProperties": "{\"FunctionName\":\"web-prod-thumbnailer\",\"MemorySize\":512,\"Timeout\":30,\"Tags\":[{\"Key\":\"team\",\"Value\":\"web\"}]}",
+      "ActualProperties": "{\"FunctionName\":\"web-prod-thumbnailer\",\"MemorySize\":512,\"Timeout\":30,\"Tags\":[{\"Key\":\"team\",\"Value\":\"web\"},{\"Key\":\"lambda-console:blueprint\",\"Value\":\"none\"}]}",
+      "PropertyDifferences": [
+        {
+          "PropertyPath": "/Tags/1",
+          "ExpectedValue": "null",
+          "ActualValue": "{\"Key\":\"lambda-console:blueprint\",\"Value\":\"none\"}",
+          "DifferenceType": "ADD"
+        }
+      ],
+      "StackResourceDriftStatus": "MODIFIED",
+      "Timestamp": "2025-11-09T14:02:11.512000+00:00"
+    },
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/web-prod/5b1f0c40-9e2a-11ef-8c3d-0a1b2c3d4e5f",
+      "LogicalResourceId": "LegacyAlarmTopic",
+      "PhysicalResourceId": "arn:aws:sns:us-east-1:123456789012:web-prod-legacy-alarms",
+      "ResourceType": "AWS::SNS::Topic",
+      "StackResourceDriftStatus": "DELETED",
+      "Timestamp": "2025-11-09T14:02:11.512000+00:00"
+    },
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/web-prod/5b1f0c40-9e2a-11ef-8c3d-0a1b2c3d4e5f",
+      "LogicalResourceId": "WebRole",
+      "PhysicalResourceId": "web-prod-WebRole-1A2B3C4D5E6F",
+      "ResourceType": "AWS::IAM::Role",
+      "ExpectedProperties": "{\"RoleName\":\"web-prod-WebRole-1A2B3C4D5E6F\"}",
+      "ActualProperties": "{\"RoleName\":\"web-prod-WebRole-1A2B3C4D5E6F\"}",
+      "StackResourceDriftStatus": "IN_SYNC",
+      "Timestamp": "2025-11-09T14:02:11.512000+00:00"
+    },
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/web-prod/5b1f0c40-9e2a-11ef-8c3d-0a1b2c3d4e5f",
+      "LogicalResourceId": "AppLogGroup",
+      "PhysicalResourceId": "/acme/web-prod/app",
+      "ResourceType": "AWS::Logs::LogGroup",
+      "ExpectedProperties": "{\"RetentionInDays\":30}",
+      "ActualProperties": "{\"RetentionInDays\":30}",
+      "StackResourceDriftStatus": "IN_SYNC",
+      "Timestamp": "2025-11-09T14:02:11.512000+00:00"
+    }
+  ]
+}

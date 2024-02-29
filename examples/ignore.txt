@@ -1,0 +1,7 @@
+# Known-noisy differences. One rule per line:
+#   PATH_GLOB                    (any resource type)
+#   RESOURCE_TYPE PATH_GLOB
+# Globs use shell-style wildcards; '*' also matches '/'.
+
+# Tags added by the Lambda console are not managed by this stack.
+AWS::Lambda::Function /Tags/*
